@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+
+float celsiusToFahrenheit (float cels) {
+    return ((cels * 9.0) / 5.0) + 32.0;
+}
+
+float celsiusToKelvin (float cels) {
+    return cels + 273.15;
+}
+
+float fahrenheitToCelsius (float fahr) {
+    return ((fahr - 32.0) * 5.0) / 9.0;
+}
+
+float fahrenheitToKelvin (float fahr) {
+    return ((fahr + 459.67) * 5.0) / 9.0;
+}
+
+float kelvinToCelsius (float kelv) {
+    return kelv - 273.15;
+}
+
+float kelvinToFahrenheit (float kelv) {
+    return ((kelv * 9.0) / 5) - 459.67;
+}
+
+int main() {
+    string words[6] = {
+        "Celsius to Fahrenheit", "Celsius to Kelvin",
+        "Fahrenheit to Celsius", "Fahrenheit to Kelvin",
+        "Kelvin to Celsius", "Kelvin to Fahrenheit"
+        };
+    
+    cout << "Temperature Converter" << endl;
+
+    for (int i = 0; i < 6; i++) {
+        cout << (i + 1) << ". " 
+        << words[i] << endl;
+    }
+
+    int choice;
+    float temp;
+    cout << "Enter your choice (1-6):" << endl;
+    cin >> choice;
+
+    cout << "Enter the temperature:" << endl;
+    cin >> temp;
+
+    float res = (
+        (choice == 1) ?
+        celsiusToFahrenheit(temp) :
+
+        (choice == 2) ?
+        celsiusToKelvin(temp) :
+
+        (choice == 3) ?
+        fahrenheitToCelsius(temp) :
+
+        (choice == 4) ?
+        fahrenheitToKelvin(temp) :
+
+        (choice == 5) ?
+        kelvinToCelsius(temp) :
+
+        kelvinToFahrenheit(temp)
+    );
+
+    string convertedTo = (
+
+        (choice == 1 || choice == 6) ?
+        "Fahrenheit" :
+
+        (choice == 2 || choice == 4) ?
+        "Kelvin" :
+
+        "Celsius"
+    );
+
+    cout << "Temperature in " 
+    << convertedTo << ": " 
+    << res << endl;
+
+    return 0;
+}
